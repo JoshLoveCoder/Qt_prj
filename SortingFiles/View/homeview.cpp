@@ -13,14 +13,14 @@ HomeView::HomeView(QWidget *parent) : QWidget(parent)
 
     sp = tranBtn->sizePolicy();
     sp.setVerticalStretch(1);
-    sp.setVerticalPolicy(QSizePolicy::Fixed);
+    sp.setVerticalPolicy(QSizePolicy::Expanding);
     tranBtn->setSizePolicy(sp);
 
 
     QPlainTextEdit *logView = new QPlainTextEdit;
 
     sp = logView->sizePolicy();
-    sp.setVerticalStretch(5);
+    sp.setVerticalStretch(1);
     sp.setVerticalPolicy(QSizePolicy::Minimum);
     logView->setSizePolicy(sp);
 
