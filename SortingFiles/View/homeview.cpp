@@ -1,6 +1,8 @@
 #include "homeview.h"
 #include <QSizePolicy>
 
+static int defaultLength = 50;
+
 HomeView::HomeView(QWidget *parent) : QWidget(parent)
 {
 
@@ -9,7 +11,9 @@ HomeView::HomeView(QWidget *parent) : QWidget(parent)
     QSizePolicy sp;
 
     QPushButton *tranBtn = new QPushButton("转移");
-    tranBtn->setMinimumHeight(55);
+    tranBtn->setMinimumHeight(defaultLength);
+    tranBtn->resize(defaultLength,defaultLength);
+    connect(tranBtn,SIGNAL(clicked(bool)),this,SLOT(transTouched()));
 
     sp = tranBtn->sizePolicy();
     sp.setVerticalStretch(1);
@@ -18,7 +22,6 @@ HomeView::HomeView(QWidget *parent) : QWidget(parent)
 
 
     QPlainTextEdit *logView = new QPlainTextEdit;
-
     sp = logView->sizePolicy();
     sp.setVerticalStretch(1);
     sp.setVerticalPolicy(QSizePolicy::Minimum);
@@ -28,14 +31,16 @@ HomeView::HomeView(QWidget *parent) : QWidget(parent)
     leftVBLayout->addWidget(tranBtn);
     leftVBLayout->addWidget(logView);
     leftVBLayout->setStretch(0,1);
-    leftVBLayout->setStretch(1,1);
+    leftVBLayout->setStretch(1,5);
+    leftVBLayout->setContentsMargins(0,0,0,0);
     QWidget *leftVeiw = new QWidget;
     leftVeiw->setLayout(leftVBLayout);
 
 
     QToolButton *toolBtn1 = new QToolButton();
+    toolBtn1->setMinimumSize(defaultLength,defaultLength);
     QPlainTextEdit *ptext1 = new QPlainTextEdit("source1");
-    ptext1->setMinimumHeight(55);
+    ptext1->setMinimumHeight(defaultLength);
     sp = ptext1->sizePolicy();
     sp.setVerticalStretch(0);
     sp.setVerticalPolicy(QSizePolicy::Fixed);
@@ -44,12 +49,15 @@ HomeView::HomeView(QWidget *parent) : QWidget(parent)
     QHBoxLayout *vbl1 = new QHBoxLayout;
     vbl1->addWidget(toolBtn1);
     vbl1->addWidget(ptext1);
+    vbl1->setContentsMargins(0,0,0,0);
     QWidget *a1 = new QWidget;
     a1->setLayout(vbl1);
+    a1->setMinimumHeight(defaultLength);
 
     QToolButton *toolBtn2 = new QToolButton();
+    toolBtn2->setMinimumSize(defaultLength,defaultLength);
     QPlainTextEdit *ptext2 = new QPlainTextEdit("source2");
-    ptext2->setMinimumHeight(55);
+    ptext2->setMinimumHeight(defaultLength);
     sp = ptext2->sizePolicy();
     sp.setVerticalStretch(0);
     sp.setVerticalPolicy(QSizePolicy::Fixed);
@@ -58,8 +66,11 @@ HomeView::HomeView(QWidget *parent) : QWidget(parent)
     QHBoxLayout *vbl2 = new QHBoxLayout;
     vbl2->addWidget(toolBtn2);
     vbl2->addWidget(ptext2);
+    vbl2->setContentsMargins(0,0,0,0);
     QWidget *a2 = new QWidget;
     a2->setLayout(vbl2);
+    a2->setMinimumHeight(defaultLength);
+
 
     QPlainTextEdit *fileType = new QPlainTextEdit;
 
@@ -73,10 +84,40 @@ HomeView::HomeView(QWidget *parent) : QWidget(parent)
 
 
     QHBoxLayout *mainLayout = new QHBoxLayout;
-//    设置拉伸缩放时候
+    //    设置拉伸缩放时候
     mainLayout->addWidget(leftVeiw,1);
     mainLayout->addWidget(rightVeiw,1);
     // 设置静态比，初始化时侯，最小的，动画时候
     mainLayout->setStretch(1,1);
     this->setLayout(mainLayout);
+    audioRecorder = new QAudioRecorder;
 }
+
+void HomeView::transTouched(){
+    qDebug()<<"trans touched _____999999999_____";
+    //    QAudioRecorder *re = new QAudioRecorder();
+
+    qDebug()<<"rec state: "<<audioRecorder->state();
+
+    if (audioRecorder->state() == QAudioRecorder::StoppedState){
+
+        QAudioEncoderSettings audioSettings;
+        audioSettings.setCodec("audio/amr");
+        audioSettings.setQuality(QMultimedia::HighQuality);
+
+        audioRecorder->setEncodingSettings(audioSettings);
+
+        audioRecorder->setOutputLocation(QUrl::fromLocalFile("/Users/frittadmin/qtprj/sorting_file/a.amr"));
+        audioRecorder->record();
+
+
+        qDebug()<<"input: "<<audioRecorder->audioInput();
+    }else if(audioRecorder->state() == QAudioRecorder::RecordingState){
+        qDebug()<<"audiorecorder to stop";
+        audioRecorder->stop();
+        qDebug()<<"audiorecorder stopped OK: "<<audioRecorder->state();
+    }else{
+        qDebug()<<"audiorecorder pause";
+    }
+
+    }

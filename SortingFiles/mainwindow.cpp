@@ -10,8 +10,8 @@ MainWindow::MainWindow(QWidget *parent) :
 //    ui->setupUi(this);
     HomeView *homeView = new HomeView(this);
     this->setCentralWidget(homeView);
-//    homeView->show();
     resize(600,370);
+//    setMinimumSize(600,370);
 }
 
 MainWindow::~MainWindow()
