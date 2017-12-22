@@ -90,34 +90,9 @@ HomeView::HomeView(QWidget *parent) : QWidget(parent)
     // 设置静态比，初始化时侯，最小的，动画时候
     mainLayout->setStretch(1,1);
     this->setLayout(mainLayout);
-    audioRecorder = new QAudioRecorder;
 }
 
 void HomeView::transTouched(){
     qDebug()<<"trans touched _____999999999_____";
-    //    QAudioRecorder *re = new QAudioRecorder();
-
-    qDebug()<<"rec state: "<<audioRecorder->state();
-
-    if (audioRecorder->state() == QAudioRecorder::StoppedState){
-
-        QAudioEncoderSettings audioSettings;
-        audioSettings.setCodec("audio/amr");
-        audioSettings.setQuality(QMultimedia::HighQuality);
-
-        audioRecorder->setEncodingSettings(audioSettings);
-
-        audioRecorder->setOutputLocation(QUrl::fromLocalFile("/Users/frittadmin/qtprj/sorting_file/a.amr"));
-        audioRecorder->record();
-
-
-        qDebug()<<"input: "<<audioRecorder->audioInput();
-    }else if(audioRecorder->state() == QAudioRecorder::RecordingState){
-        qDebug()<<"audiorecorder to stop";
-        audioRecorder->stop();
-        qDebug()<<"audiorecorder stopped OK: "<<audioRecorder->state();
-    }else{
-        qDebug()<<"audiorecorder pause";
-    }
 
     }
