@@ -5,6 +5,7 @@ Home::Home(QWidget *parent) : QWidget(parent)
     QSizePolicy sp;
 
     btn = new QPushButton("Title Here");
+    btn->setStyleSheet("background-color:green;border:none");
     btn->setFixedHeight(60);
     sp = btn->sizePolicy();
     sp.setVerticalPolicy(QSizePolicy::Fixed);
@@ -12,14 +13,14 @@ Home::Home(QWidget *parent) : QWidget(parent)
     btn->setSizePolicy(sp);
 
     blow1 = new QWidget();
-    blow1->setStyleSheet("background-color:black;");
+    blow1->setStyleSheet("background-color:lightblue;border:none");
     blow1->setFixedWidth(60);
     sp = blow1->sizePolicy();
     sp.setHorizontalPolicy(QSizePolicy::Fixed);
     blow1->setSizePolicy(sp);
 
     blow2 = new QWidget();
-    blow2->setStyleSheet("background-color:yellow;");
+    blow2->setStyleSheet("background-color:yellow;border:none");
     blow2->setMinimumWidth(220);
     blow2->setMaximumWidth(320);
     sp = blow2->sizePolicy();
@@ -27,7 +28,7 @@ Home::Home(QWidget *parent) : QWidget(parent)
     blow2->setSizePolicy(sp);
 
     blow3 = new QWidget();
-    blow3->setStyleSheet("background-color:purple;");
+    blow3->setStyleSheet("background-color:purple;border:none");
     blow3->setMinimumWidth(600);
     sp = blow3->sizePolicy();
     sp.setHorizontalPolicy(QSizePolicy::MinimumExpanding);
@@ -38,13 +39,15 @@ Home::Home(QWidget *parent) : QWidget(parent)
     hlayout->addWidget(blow1);
     hlayout->addWidget(blow2);
     hlayout->addWidget(blow3);
+    // this default is 6,or ohters
+    hlayout->setSpacing(0);
 //    if not setStretch, it will be not stretch
     hlayout->setStretch(0,0);
     hlayout->setStretch(1,3);
     hlayout->setStretch(2,9);
 
     QWidget *belowView = new QWidget(this);
-    belowView->setStyleSheet("background-color:blue;");
+    belowView->setStyleSheet("background-color:white;");
 
     belowView->setMinimumHeight(360);
     belowView->setLayout(hlayout);
@@ -59,5 +62,6 @@ Home::Home(QWidget *parent) : QWidget(parent)
     vbl->addWidget(belowView);
 //    vbl->setStretch(1,5);
     vbl->setContentsMargins(0,0,0,6);
+    vbl->setSpacing(0);
     this->setLayout(vbl);
 }
