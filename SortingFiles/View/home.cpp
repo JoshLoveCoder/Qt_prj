@@ -64,4 +64,7 @@ Home::Home(QWidget *parent) : QWidget(parent)
     vbl->setContentsMargins(0,0,0,6);
     vbl->setSpacing(0);
     this->setLayout(vbl);
+
 }
+
+
