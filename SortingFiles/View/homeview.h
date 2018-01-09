@@ -16,7 +16,9 @@ class HomeView : public QWidget
 
     Q_OBJECT
 private:
-
+    QPushButton *tranBtn;
+    QPlainTextEdit *ptext1;
+    QPlainTextEdit *ptext2;
 public:
     explicit HomeView(QWidget *parent = nullptr);
 

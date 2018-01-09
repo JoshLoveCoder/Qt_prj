@@ -26,11 +26,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    View/homeview.cpp
+    View/homeview.cpp \
+    View/mainhomeframe.cpp \
+    View/home.cpp
 
 HEADERS += \
         mainwindow.h \
-    View/homeview.h
+    View/homeview.h \
+    View/mainhomeframe.h \
+    View/home.h
 
 FORMS += \
         mainwindow.ui
