@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QWidget>
+#include <QPlainTextEdit>
 
 class Cell_A : public QWidget
 {
