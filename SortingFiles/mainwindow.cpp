@@ -3,6 +3,8 @@
 #include "View/homeview.h"
 #include "View/mainhomeframe.h"
 #include "View/home.h"
+#include <QMenuBar>
+#include <QMenu>
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -27,6 +29,10 @@ MainWindow::MainWindow(QWidget *parent) :
     this->setCentralWidget(home);
     setMinimumSize(1080,600);
     setContentsMargins(0,0,0,0);
+    QWidget *menu = new QWidget(this);
+    menu->resize(50,1000);
+    menu->setStyleSheet("backgroundcolor:red");
+    setMenuWidget(menu);
 }
 
 MainWindow::~MainWindow()

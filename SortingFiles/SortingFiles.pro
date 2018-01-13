@@ -28,13 +28,45 @@ SOURCES += \
         mainwindow.cpp \
     View/homeview.cpp \
     View/mainhomeframe.cpp \
-    View/home.cpp
+    View/home.cpp \
+    View/home.cpp \
+    View/homeview.cpp \
+    View/mainhomeframe.cpp \
+    main.cpp \
+    mainwindow.cpp \
+    View/home.cpp \
+    View/homeview.cpp \
+    View/mainhomeframe.cpp \
+    main.cpp \
+    mainwindow.cpp \
+    View/home.cpp \
+    View/homeview.cpp \
+    View/mainhomeframe.cpp \
+    main.cpp \
+    mainwindow.cpp \
+    Cell/cell_a.cpp \
+    UI_files/form_a.cpp
 
 HEADERS += \
         mainwindow.h \
     View/homeview.h \
     View/mainhomeframe.h \
-    View/home.h
+    View/home.h \
+    View/home.h \
+    View/homeview.h \
+    View/mainhomeframe.h \
+    mainwindow.h \
+    View/home.h \
+    View/homeview.h \
+    View/mainhomeframe.h \
+    mainwindow.h \
+    View/home.h \
+    View/homeview.h \
+    View/mainhomeframe.h \
+    mainwindow.h \
+    Cell/cell_a.h \
+    UI_files/form_a.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    UI_files/form_a.ui
