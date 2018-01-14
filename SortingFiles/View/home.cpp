@@ -9,7 +9,7 @@ Home::Home(QWidget *parent) : QWidget(parent)
     btn->setFixedHeight(60);
     sp = btn->sizePolicy();
     sp.setVerticalPolicy(QSizePolicy::Fixed);
-//    sp.setHorizontalPolicy(QSizePolicy::Expanding);
+    //    sp.setHorizontalPolicy(QSizePolicy::Expanding);
     btn->setSizePolicy(sp);
 
     blow1 = new QWidget();
@@ -27,8 +27,8 @@ Home::Home(QWidget *parent) : QWidget(parent)
     sp.setHorizontalPolicy(QSizePolicy::MinimumExpanding);
     blow2->setSizePolicy(sp);
 
-    blow3 = new QWidget();
-    blow3->setStyleSheet("background-color:purple;border:none");
+    blow3 = new QListWidget(this);
+    //    blow3->setStyleSheet("background-color:lightblue;border:none");
     blow3->setMinimumWidth(600);
     sp = blow3->sizePolicy();
     sp.setHorizontalPolicy(QSizePolicy::MinimumExpanding);
@@ -41,7 +41,7 @@ Home::Home(QWidget *parent) : QWidget(parent)
     hlayout->addWidget(blow3);
     // this default is 6,or ohters
     hlayout->setSpacing(0);
-//    if not setStretch, it will be not stretch
+    //    if not setStretch, it will be not stretch
     hlayout->setStretch(0,0);
     hlayout->setStretch(1,3);
     hlayout->setStretch(2,9);
@@ -58,13 +58,85 @@ Home::Home(QWidget *parent) : QWidget(parent)
 
     QVBoxLayout *vbl = new QVBoxLayout();
     vbl->addWidget(btn);
-//    vbl->setStretch(0,1);
+    //    vbl->setStretch(0,1);
     vbl->addWidget(belowView);
-//    vbl->setStretch(1,5);
+    //    vbl->setStretch(1,5);
     vbl->setContentsMargins(0,0,0,6);
     vbl->setSpacing(0);
     this->setLayout(vbl);
 
+
+    initData();
+    initUI();
+    initSetting();
 }
 
 
+void Home::initData(){
+
+}
+void Home::initUI(){
+    blow3->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    blow3->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+}
+void Home::initSetting(){
+
+    Form_B *a = new Form_B();
+    Form_B *b = new Form_B;
+    Form_B *c = new Form_B;
+    Form_B *d = new Form_B;
+    Form_B *e = new Form_B;
+    Form_B *f = new Form_B;
+
+    QListWidgetItem *m_1 = new QListWidgetItem;
+    QListWidgetItem *m_2 = new QListWidgetItem;
+    QListWidgetItem *m_3 = new QListWidgetItem;
+    QListWidgetItem *m_4 = new QListWidgetItem;
+    QListWidgetItem *m_5 = new QListWidgetItem;
+    QListWidgetItem *m_6 = new QListWidgetItem;
+
+    m_1->setSizeHint(QSize(80,80));
+    m_2->setSizeHint(QSize(80,80));
+    m_3->setSizeHint(QSize(80,80));
+    m_4->setSizeHint(QSize(80,80));
+    m_5->setSizeHint(QSize(80,80));
+    m_6->setSizeHint(QSize(80,80));
+
+    blow3->insertItem(0,m_1);
+    blow3->insertItem(1,m_2);
+    blow3->insertItem(2,m_3);
+    blow3->insertItem(3,m_4);
+    blow3->insertItem(4,m_5);
+    blow3->insertItem(5,m_6);
+
+
+    blow3->setItemWidget(m_1,a);
+    blow3->setItemWidget(m_2,b);
+    blow3->setItemWidget(m_3,c);
+    blow3->setItemWidget(m_4,d);
+    blow3->setItemWidget(m_5,e);
+    blow3->setItemWidget(m_6,f);
+
+
+
+    new QListWidgetItem(tr("Oak"), blow3);
+    new QListWidgetItem(tr("Oak"), blow3);
+    new QListWidgetItem(tr("Oak"), blow3);
+    new QListWidgetItem(tr("Oak"), blow3);
+    new QListWidgetItem(tr("Oak"), blow3);
+    new QListWidgetItem(tr("Oak"), blow3);
+    new QListWidgetItem(tr("Oak"), blow3);
+    new QListWidgetItem(tr("Oak"), blow3);
+    new QListWidgetItem(tr("Oak"), blow3);
+    new QListWidgetItem(tr("Oak"), blow3);
+    new QListWidgetItem(tr("Oak"), blow3);
+    new QListWidgetItem(tr("Oak"), blow3);
+    new QListWidgetItem(tr("Oak"), blow3);
+    new QListWidgetItem(tr("Oak"), blow3);
+    new QListWidgetItem(tr("Oak"), blow3);
+    new QListWidgetItem(tr("Oak"), blow3);
+
+}
+void Home::initConnect(){
+
+}

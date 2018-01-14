@@ -30,7 +30,8 @@ SOURCES += \
     View/mainhomeframe.cpp \
     View/home.cpp \
     Cell/cell_a.cpp \
-    UI_files/form_a.cpp
+    UI_files/form_a.cpp \
+    UI_files/form_b.cpp
 
 HEADERS += \
     mainwindow.h \
@@ -38,8 +39,14 @@ HEADERS += \
     View/homeview.h \
     View/mainhomeframe.h \
     Cell/cell_a.h \
-    UI_files/form_a.h
+    UI_files/form_a.h \
+    UI_files/form_b.h
 
 FORMS += \
         mainwindow.ui \
-    UI_files/form_a.ui
+    UI_files/form_a.ui \
+    UI_files/form_b.ui
+
+DISTFILES += \
+    Image/a001.jpg \
+    Image/a002.jpg

@@ -7,6 +7,10 @@
 #include <QPlainTextEdit>
 #include <QSizePolicy>
 #include <QVBoxLayout>
+#include "Cell/cell_a.h"
+#include <QListWidget>
+#include <QListWidgetItem>
+#include "UI_files/form_b.h"
 
 
 
@@ -18,7 +22,14 @@ public:
     QPushButton *btn;
     QWidget *blow1;
     QWidget *blow2;
-    QWidget *blow3;
+    QListWidget *blow3;
+
+
+    void initData();
+    void initUI();
+    void initSetting();
+    void initConnect();
+
 signals:
 
 public slots:

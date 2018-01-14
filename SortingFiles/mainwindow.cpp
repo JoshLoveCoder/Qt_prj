@@ -5,6 +5,7 @@
 #include "View/home.h"
 #include <QMenuBar>
 #include <QMenu>
+#include "UI_files/form_a.h"
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -33,6 +34,9 @@ MainWindow::MainWindow(QWidget *parent) :
     menu->resize(50,1000);
     menu->setStyleSheet("backgroundcolor:red");
     setMenuWidget(menu);
+
+//    Form_A *a = new Form_A;
+//    setCentralWidget(a);
 }
 
 MainWindow::~MainWindow()
