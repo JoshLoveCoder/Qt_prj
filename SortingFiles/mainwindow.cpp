@@ -6,6 +6,7 @@
 #include <QMenuBar>
 #include <QMenu>
 #include "UI_files/form_a.h"
+#include "UI_files/form_b.h"
 
 
 MainWindow::MainWindow(QWidget *parent) :

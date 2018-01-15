@@ -11,6 +11,7 @@
 #include <QListWidget>
 #include <QListWidgetItem>
 #include "UI_files/form_b.h"
+#include "UI_files/form_c.h"
 
 
 

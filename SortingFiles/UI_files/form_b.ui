@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>599</width>
-    <height>60</height>
+    <height>95</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -32,8 +32,14 @@
      <property name="cursor" stdset="0">
       <cursorShape>IBeamCursor</cursorShape>
      </property>
+     <property name="lineWidth">
+      <number>0</number>
+     </property>
      <property name="readOnly">
       <bool>true</bool>
+     </property>
+     <property name="textInteractionFlags">
+      <set>Qt::TextSelectableByMouse</set>
      </property>
     </widget>
    </item>
