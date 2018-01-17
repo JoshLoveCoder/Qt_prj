@@ -12,6 +12,7 @@
 #include <QListWidgetItem>
 #include "UI_files/form_b.h"
 #include "UI_files/form_c.h"
+#include <QDebug>
 
 
 
@@ -22,8 +23,8 @@ public:
     explicit Home(QWidget *parent = nullptr);
     QPushButton *btn;
     QWidget *blow1;
-    QWidget *blow2;
-    QListWidget *blow3;
+    QWidget *itemsList;
+    QListWidget *msgDetails;
 
 
     void initData();
@@ -34,6 +35,11 @@ public:
 signals:
 
 public slots:
+    void add();
+    void del();
+    void update();
+    void query();
+
 };
 
 #endif // HOME_H

@@ -13,8 +13,13 @@ Form_C::Form_C(QWidget *parent) :
     ui->plainTextEdit->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->plainTextEdit->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->plainTextEdit->setContentsMargins(10,5,5,10);
-    this->setStyleSheet("border:0px;backgroundcolor:lightblue;QListWidget::item:selected { background-color:red }");
+    this->setStyleSheet("border:0px;background-color:lightblue;QListWidget::item:selected { background-color:red }");
 
+}
+
+
+void Form_C::setText(){
+    setStyleSheet("background-color:purple");
 }
 
 Form_C::~Form_C()

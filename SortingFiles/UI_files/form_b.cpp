@@ -19,7 +19,7 @@ Form_B::Form_B(QWidget *parent) :
     ui->plainTextEdit->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->plainTextEdit->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->plainTextEdit->setContentsMargins(10,5,5,10);
-    this->setStyleSheet("border:0px;backgroundcolor:yellow");
+    this->setStyleSheet("border:0px;background-color:yellow");
 
 }
 

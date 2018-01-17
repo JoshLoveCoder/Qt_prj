@@ -14,7 +14,7 @@ class Form_C : public QWidget
 public:
     explicit Form_C(QWidget *parent = 0);
     ~Form_C();
-
+    void setText();
 private:
     Ui::Form_C *ui;
 };

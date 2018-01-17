@@ -33,7 +33,7 @@ MainWindow::MainWindow(QWidget *parent) :
     setContentsMargins(0,0,0,0);
     QWidget *menu = new QWidget(this);
     menu->resize(50,1000);
-    menu->setStyleSheet("backgroundcolor:red");
+    menu->setStyleSheet("background-color:red");
     setMenuWidget(menu);
 
 //    Form_A *a = new Form_A;
@@ -43,4 +43,9 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+
 }

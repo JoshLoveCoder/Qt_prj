@@ -19,26 +19,26 @@ Home::Home(QWidget *parent) : QWidget(parent)
     sp.setHorizontalPolicy(QSizePolicy::Fixed);
     blow1->setSizePolicy(sp);
 
-    blow2 = new QWidget();
-    blow2->setStyleSheet("background-color:yellow;border:none");
-    blow2->setMinimumWidth(220);
-    blow2->setMaximumWidth(320);
-    sp = blow2->sizePolicy();
+    itemsList = new QWidget();
+    itemsList->setStyleSheet("background-color:yellow;border:none");
+    itemsList->setMinimumWidth(220);
+    itemsList->setMaximumWidth(320);
+    sp = itemsList->sizePolicy();
     sp.setHorizontalPolicy(QSizePolicy::MinimumExpanding);
-    blow2->setSizePolicy(sp);
+    itemsList->setSizePolicy(sp);
 
-    blow3 = new QListWidget(this);
-    //    blow3->setStyleSheet("background-color:lightblue;border:none");
-    blow3->setMinimumWidth(600);
-    sp = blow3->sizePolicy();
+    msgDetails = new QListWidget(this);
+    //    msgDetails->setStyleSheet("background-color:lightblue;border:none");
+    msgDetails->setMinimumWidth(600);
+    sp = msgDetails->sizePolicy();
     sp.setHorizontalPolicy(QSizePolicy::MinimumExpanding);
-    blow3->setSizePolicy(sp);
+    msgDetails->setSizePolicy(sp);
 
     QHBoxLayout *hlayout = new QHBoxLayout();
     hlayout->setContentsMargins(0,0,0,0);
     hlayout->addWidget(blow1);
-    hlayout->addWidget(blow2);
-    hlayout->addWidget(blow3);
+    hlayout->addWidget(itemsList);
+    hlayout->addWidget(msgDetails);
     // this default is 6,or ohters
     hlayout->setSpacing(0);
     //    if not setStretch, it will be not stretch
@@ -76,8 +76,38 @@ void Home::initData(){
 
 }
 void Home::initUI(){
-    blow3->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    blow3->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    msgDetails->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    msgDetails->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+    QPushButton *add = new QPushButton(itemsList);
+    add->resize(80,80);
+    add->setStyleSheet("background-color:red");
+    add->setText("add");
+    connect(add,SIGNAL(clicked(bool)),this,SLOT(add()));
+
+    QPushButton *del = new QPushButton(itemsList);
+    del->resize(80,80);
+    del->setText("del");
+    connect(del,SIGNAL(clicked(bool)),this,SLOT(del()));
+
+    QPushButton *update = new QPushButton(itemsList);
+    update->resize(80,80);
+    update->setText("update");
+    connect(update,SIGNAL(clicked(bool)),this,SLOT(update()));
+
+    QPushButton *query = new QPushButton(itemsList);
+    query->resize(80,80);
+    query->setText("query");
+    connect(query,SIGNAL(clicked(bool)),this,SLOT(query()));
+
+    QVBoxLayout *vboxlayout = new QVBoxLayout();
+    vboxlayout->addWidget(add,1,Qt::AlignCenter);
+    vboxlayout->addWidget(del,1,Qt::AlignCenter);
+    vboxlayout->addWidget(update,1,Qt::AlignCenter);
+    vboxlayout->addWidget(query,1,Qt::AlignCenter);
+
+    itemsList->setLayout(vboxlayout);
+
 }
 void Home::initSetting(){
 
@@ -118,52 +148,80 @@ void Home::initSetting(){
     mm4->setSizeHint(QSize(80,80));
     mm5->setSizeHint(QSize(80,80));
 
-    blow3->insertItem(0,m_1);
-    blow3->insertItem(1,m_2);
-    blow3->insertItem(2,m_3);
-    blow3->insertItem(3,m_4);
-    blow3->insertItem(4,m_5);
-    blow3->insertItem(5,m_6);
-    blow3->insertItem(6,mm1);
-    blow3->insertItem(6,mm2);
-    blow3->insertItem(6,mm3);
-    blow3->insertItem(6,mm4);
-    blow3->insertItem(6,mm5);
+    msgDetails->insertItem(0,m_1);
+    msgDetails->insertItem(1,m_2);
+    msgDetails->insertItem(2,m_3);
+    msgDetails->insertItem(3,m_4);
+    msgDetails->insertItem(4,m_5);
+    msgDetails->insertItem(5,m_6);
+    msgDetails->insertItem(6,mm1);
+    msgDetails->insertItem(6,mm2);
+    msgDetails->insertItem(6,mm3);
+    msgDetails->insertItem(6,mm4);
+    msgDetails->insertItem(6,mm5);
 
 
-    blow3->setItemWidget(m_1,a);
-    blow3->setItemWidget(m_2,b);
-    blow3->setItemWidget(m_3,c);
-    blow3->setItemWidget(m_4,d);
-    blow3->setItemWidget(m_5,e);
-    blow3->setItemWidget(m_6,f);
-    blow3->setItemWidget(mm1,ae1);
-    blow3->setItemWidget(mm2,ae2);
-    blow3->setItemWidget(mm3,ae3);
-    blow3->setItemWidget(mm4,ae4);
-    blow3->setItemWidget(mm5,ae5);
+    msgDetails->setItemWidget(m_1,a);
+    msgDetails->setItemWidget(m_2,b);
+    msgDetails->setItemWidget(m_3,c);
+    msgDetails->setItemWidget(m_4,d);
+    msgDetails->setItemWidget(m_5,e);
+    msgDetails->setItemWidget(m_6,f);
+    msgDetails->setItemWidget(mm1,ae1);
+    msgDetails->setItemWidget(mm2,ae2);
+    msgDetails->setItemWidget(mm3,ae3);
+    msgDetails->setItemWidget(mm4,ae4);
+    msgDetails->setItemWidget(mm5,ae5);
 
 
 
 
-    new QListWidgetItem(tr("Oak"), blow3);
-    new QListWidgetItem(tr("Oak"), blow3);
-    new QListWidgetItem(tr("Oak"), blow3);
-    new QListWidgetItem(tr("Oak"), blow3);
-    new QListWidgetItem(tr("Oak"), blow3);
-    new QListWidgetItem(tr("Oak"), blow3);
-    new QListWidgetItem(tr("Oak"), blow3);
-    new QListWidgetItem(tr("Oak"), blow3);
-    new QListWidgetItem(tr("Oak"), blow3);
-    new QListWidgetItem(tr("Oak"), blow3);
-    new QListWidgetItem(tr("Oak"), blow3);
-    new QListWidgetItem(tr("Oak"), blow3);
-    new QListWidgetItem(tr("Oak"), blow3);
-    new QListWidgetItem(tr("Oak"), blow3);
-    new QListWidgetItem(tr("Oak"), blow3);
-    new QListWidgetItem(tr("Oak"), blow3);
+    new QListWidgetItem(tr("Oak"), msgDetails);
+    new QListWidgetItem(tr("Oak"), msgDetails);
+    new QListWidgetItem(tr("Oak"), msgDetails);
+    new QListWidgetItem(tr("Oak"), msgDetails);
+    new QListWidgetItem(tr("Oak"), msgDetails);
+    new QListWidgetItem(tr("Oak"), msgDetails);
+    new QListWidgetItem(tr("Oak"), msgDetails);
+    new QListWidgetItem(tr("Oak"), msgDetails);
+    new QListWidgetItem(tr("Oak"), msgDetails);
+    new QListWidgetItem(tr("Oak"), msgDetails);
+    new QListWidgetItem(tr("Oak"), msgDetails);
+    new QListWidgetItem(tr("Oak"), msgDetails);
+    new QListWidgetItem(tr("Oak"), msgDetails);
+    new QListWidgetItem(tr("Oak"), msgDetails);
+    new QListWidgetItem(tr("Oak"), msgDetails);
+    new QListWidgetItem(tr("Oak"), msgDetails);
 
 }
 void Home::initConnect(){
+
+}
+
+
+void Home::add(){
+    qDebug()<<"add";
+    Form_C *newOne = new Form_C;
+    newOne->setText();
+    QListWidgetItem *item = new QListWidgetItem;
+    item->setSizeHint(QSize(80,80));
+    msgDetails->insertItem(msgDetails->count(),item);
+    msgDetails->setItemWidget(item,newOne);
+    //    msgDetails->update();
+    //    msgDetails->repaint();
+    msgDetails->scrollToBottom();
+}
+void  Home::del(){
+    qDebug()<<"del";
+    QListWidgetItem *toBeDelete = msgDetails->takeItem(msgDetails->count()-1);
+//    msgDetails->removeItemWidget(toBeDelete);
+    delete toBeDelete;
+}
+void  Home::update(){
+    qDebug()<<"update";
+
+}
+void  Home::query(){
+    qDebug()<<"query";
 
 }
